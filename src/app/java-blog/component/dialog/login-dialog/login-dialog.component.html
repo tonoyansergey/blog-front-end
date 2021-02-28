@@ -1,0 +1,39 @@
+<div class="dialog-title">
+  <img class="icon-login" alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIKdmlld0JveD0iMCAwIDE3MiAxNzIiCnN0eWxlPSIgZmlsbDojMDAwMDAwOyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJub256ZXJvIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgZm9udC1mYW1pbHk9Im5vbmUiIGZvbnQtd2VpZ2h0PSJub25lIiBmb250LXNpemU9Im5vbmUiIHRleHQtYW5jaG9yPSJub25lIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG5vcm1hbCI+PHBhdGggZD0iTTAsMTcydi0xNzJoMTcydjE3MnoiIGZpbGw9Im5vbmUiPjwvcGF0aD48ZyBmaWxsPSIjZmZmZmZmIj48cGF0aCBkPSJNODYsMTAuMzJjLTIyLjgzMDMxLDAgLTQxLjI4LDE4LjQ0OTY5IC00MS4yOCw0MS4yOHYxNy4yaC0xMy43NmMtNS42NTcxOSwwIC0xMC4zMiw0LjY2MjgxIC0xMC4zMiwxMC4zMnY4Mi41NmMwLDUuNjU3MTkgNC42NjI4MSwxMC4zMiAxMC4zMiwxMC4zMmgxMTAuMDhjNS42NTcxOSwwIDEwLjMyLC00LjY2MjgxIDEwLjMyLC0xMC4zMnYtODIuNTZjMCwtNS42NTcxOSAtNC42NjI4MSwtMTAuMzIgLTEwLjMyLC0xMC4zMmgtMTMuNzZ2LTE3LjJjMCwtMjIuODMwMzEgLTE4LjQ0OTY5LC00MS4yOCAtNDEuMjgsLTQxLjI4ek04NiwxNy4yYzE5LjE0ODQ0LDAgMzQuNCwxNS4yNTE1NiAzNC40LDM0LjR2MTcuMmgtNjguOHYtMTcuMmMwLC0xOS4xNDg0NCAxNS4yNTE1NiwtMzQuNCAzNC40LC0zNC40ek0zMC45Niw3NS42OGgxMTAuMDhjMS45MDgxMywwIDMuNDQsMS41MzE4OCAzLjQ0LDMuNDR2ODIuNTZjMCwxLjkwODEzIC0xLjUzMTg3LDMuNDQgLTMuNDQsMy40NGgtMTEwLjA4Yy0xLjkwODEyLDAgLTMuNDQsLTEuNTMxODcgLTMuNDQsLTMuNDR2LTgyLjU2YzAsLTEuOTA4MTIgMS41MzE4OCwtMy40NCAzLjQ0LC0zLjQ0ek04NiwxMDMuMmMtNS44NDUzMSwwIC0xMC4zMiw0LjQ3NDY5IC0xMC4zMiwxMC4zMmMwLDMuMDkwNjMgMS4zNzA2Myw1LjgwNSAzLjQ0LDcuNTI1djkuNjc1YzAsMy43ODkzOCAzLjA5MDYzLDYuODggNi44OCw2Ljg4YzMuNzg5MzgsMCA2Ljg4LC0zLjA5MDYyIDYuODgsLTYuODh2LTkuNjc1YzIuMDY5MzgsLTEuNzIgMy40NCwtNC40MzQzNyAzLjQ0LC03LjUyNWMwLC01Ljg0NTMxIC00LjQ3NDY5LC0xMC4zMiAtMTAuMzIsLTEwLjMyeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+">
+</div>
+
+<div mat-dialog-content class="login-dialog">
+  <mat-dialog-content form [formGroup]="form" >
+  <mat-error class="form-error" align="center" *ngIf="form.errors?.badCredentials">Wrong username or password</mat-error>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="username" formControlName="username" [errorStateMatcher]="matcher" required>
+    <mat-error align="end" *ngIf="form.controls.username.errors?.required">required</mat-error>
+    <mat-error align="end" *ngIf="form.controls.username.errors?.maxlength">more than 32 characters</mat-error>
+    <mat-error align="end" *ngIf="form.controls.username.errors?.minlength">less than 4 characters</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="password" placeholder="password" [type]="hide ? 'password' : 'text'" formControlName="password" [errorStateMatcher]="matcher" required>
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error align="end" *ngIf="form.controls.password.errors?.required">required</mat-error>
+    <mat-error align="end" *ngIf="form.controls.password.errors?.maxlength">more than 16 characters</mat-error>
+    <mat-error align="end" *ngIf="form.controls.password.errors?.minlength">less than 8 characters</mat-error>
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions class="success-action" align="center">
+  <button class="success-button" mat-raised-button color="primary" [disabled]="!form.valid || form.untouched || !form.dirty" (click)="authenticate()">Log in</button>
+</mat-dialog-actions>
+
+<mat-dialog-actions class="cancel-action" align="center">
+  <button class="cancel-button" mat-raised-button color="warn" [mat-dialog-close]>Cancel</button>
+</mat-dialog-actions>
+<br>
+<div class="dialog-footer">
+<a class="sign-up" (click)="openForgotPasswordDialog()">Forgot your password ?</a>
+</div>
+</div>

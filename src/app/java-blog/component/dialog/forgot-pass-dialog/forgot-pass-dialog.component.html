@@ -1,0 +1,26 @@
+<div>
+  <h1 mat-dialog-title>Reset password</h1>
+</div>
+<div mat-dialog-content class="forget-pass-dialog">
+  <mat-dialog-content form [formGroup]="form">
+    <mat-form-field>
+      <input matInput type="email" placeholder="email" formControlName="email" [errorStateMatcher]="matcher" required>
+      <mat-hint align="end">example@email.com</mat-hint>
+      <mat-error align="end" *ngIf="form.controls.email.errors?.required">required</mat-error>
+      <mat-error align="end" *ngIf="form.controls.email.errors?.pattern">wrong pattern</mat-error>
+      <mat-error align="end" *ngIf="form.controls.email.errors?.wrongEmail">user does not exist</mat-error>
+    </mat-form-field>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="success-action" align="center">
+    <button class="success-button" mat-raised-button color="primary" [disabled]="!form.valid || !form.dirty" (click)="validateEmail()">Reset</button>
+  </mat-dialog-actions>
+
+  <mat-dialog-actions class="cancel-action" align="center">
+    <button class="cancel-button" mat-raised-button color="warn" [mat-dialog-close]>Cancel</button>
+  </mat-dialog-actions>
+  <br>
+  <div class="dialog-footer">
+  </div>
+</div>

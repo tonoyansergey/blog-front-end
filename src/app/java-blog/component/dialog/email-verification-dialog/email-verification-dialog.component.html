@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Email verification</h1>
+
+<div mat-dialog-content class="email-ver-dialog">
+
+  <mat-dialog-content form [formGroup]="form">
+    <div class="email-p">
+      <p>Code have been sent to: <span class="email">{{userForm.controls.email.value}}</span></p>
+    </div>
+    <mat-form-field>
+      <input matInput type="text" placeholder="verification code" formControlName="verCode" [errorStateMatcher]="matcher" required>
+      <mat-error align="end" *ngIf="form.controls.verCode.errors?.required">required</mat-error>
+      <mat-error align="end" *ngIf="form.controls.verCode.errors?.minlength">must be 10 character</mat-error>
+      <mat-error align="end" *ngIf="form.controls.verCode.errors?.maxlength">must be 10 character</mat-error>
+      <mat-error align="end" *ngIf="form.controls.verCode.errors?.wrongCode">wrong code</mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="success-action" align="center">
+    <button class="success-button" mat-raised-button color="primary" [disabled]="!form.valid || !form.dirty" (click)="submitVerCode()">Submit</button>
+  </mat-dialog-actions>
+
+  <mat-dialog-actions class="cancel-action" align="center">
+    <button class="cancel-button" mat-raised-button color="warn" [mat-dialog-close]>Cancel</button>
+  </mat-dialog-actions>
+  <br>
+
+  <div class="dialog-footer">
+    <a class="sign-up" (click)="resendVerCode()">Doesn't received? Click to resend</a>
+  </div>
+</div>

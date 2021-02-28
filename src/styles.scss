@@ -1,0 +1,118 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Nunito, "Helvetica Neue", sans-serif; }
+
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config($font-family: '"Nunito", sans-serif;');
+@include mat-core($custom-typography);
+
+.sign-up {
+   cursor: pointer;
+ }
+
+.dialog-footer {
+  text-align: center;
+}
+
+.mat-form-field {
+  color: #ffffff;
+
+}
+
+.mat-error {
+  font-size: 12px;
+  color: #b71c1c;
+  }
+
+.mat-dialog-title {
+  color: #adb8c1;
+  text-align: center;
+}
+
+.dialog-title {
+  text-align: center;
+}
+
+.icon-login {
+  margin-top: 15%;
+  margin-bottom: 12%;
+}
+
+.cancel-action, .success-action {
+  margin-top: 15px;
+}
+
+.success-button, .cancel-button {
+  width: 93%;
+}
+
+.mat-dialog-container {
+  //overflow: hidden !important;
+  //border-radius: 35px !important;
+  background-color: rgba(30, 38, 51, 0.96) !important;
+  color: #adb8c1;
+  padding: 40px !important;
+}
+
+.mat-dialog-container a {
+  color: #ffffff !important;
+}
+
+.mat-dialog-container p {
+  color: #ffffff !important;
+}
+
+.mat-dialog-container input {
+  caret-color: #ffffff;
+}
+
+.mat-form-field-outline,
+    .mat-form-field-empty.mat-form-field-label,::placeholder {
+  color: #6C757D;
+}
+
+
+.mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: #bebebe !important;
+}
+
+.mat-form-field-label {
+  /*change color of label*/
+  color: #6C757D !important;
+}
+
+.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: #6C757D !important;
+}
+
+.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #bebebe !important;
+}
+
+
+.mat-focused .mat-hint {
+  font-size: 12px;
+  color: #ffffff !important;
+}
+
+.mat-hint {
+  font-size: 12px;
+  color: #6C757D !important;
+}
+
+button:disabled {
+  background-color: #6C757D !important;
+}
+
+.main-container {
+  z-index:1;
+}
+
+.form-error {
+  font-size: 16px;
+  color: #b71c1c;
+  margin: 5% auto;
+}
